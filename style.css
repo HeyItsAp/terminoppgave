@@ -1,0 +1,294 @@
+/* 
+
+    Body
+
+*/
+body {
+    font-family: alfabet, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    margin: 0;
+}
+
+
+
+
+/* 
+
+    Nav bar
+
+*/
+/* The side navigation menu */
+nav {
+    width: 100%;
+    background-color: #214a80;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+}
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - endres med javascript */
+    position: fixed; 
+    z-index: 1;
+    top: 0; /* Alltid på toppen */
+    left: 0;
+    background-color: #141414 ; 
+    overflow-x: hidden; /* Slår av scrolling */
+    padding-top: 60px; 
+    transition: 0.5s; /* 0.5 transition effect */
+}
+    
+    /* The navigation menu links */
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 28px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        margin: 5px;
+    }
+    
+    /* When you mouse over the navigation links, change their color */
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+  
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+  
+ 
+    
+    .Cookie-menu {
+        display: block;
+        width: 80px;
+        height: auto;
+        margin-right: 20px;
+        margin-left: 20px;
+
+        transition: 0.5s;
+    }
+    .Cookie-menu:hover {
+        scale: 1.1;
+    }
+    .Cookie-menu:active {
+        scale: 0.9;
+        transition: 0.09s;
+    }
+/* Hamburger icon */
+    .Ham-icon-1,
+    .Ham-icon-2,
+    .Ham-icon-3 {
+        display: block;
+        width: 35px;
+        height: 5px;
+        background-color: #141414;
+        margin: 6px 0;
+        transition: 0.4s;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        
+    }
+    .Ham-icon {
+        display: none;
+    }
+    .change .Ham-icon-1 {
+        transform: translate(0, 11px) rotate(-45deg);
+    }
+
+    .change .Ham-icon-2 {
+        opacity: 0;
+    }
+
+    .change .Ham-icon-3 {
+        transform: translate(0, -11px) rotate(45deg);
+    }
+    /* On smaller screens less padding and a smaller font size */
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+        /* Hamburger icon instead of cookie button */
+        .Ham-icon {display: block;}
+        .Cookie-menu {display: none;}
+    }
+
+    /* Back to the game */
+    .Maingamelink {
+        font-size: 30px;
+        margin: 10px;
+        color: #f1f1f1;
+        transition: 1s;
+        text-decoration: none;
+    }
+    .Maingamelink:hover {
+        font-size: 30px;
+        margin: 10px;
+        color: #f1f1f1;
+        text-decoration: underline;
+        scale: 1.1;
+    }
+    .Maingamelink:active{
+        scale: 0.9;
+    }
+/*
+
+Login
+
+
+*/
+.login-dark {
+    height: 90vh;
+    background:#d5b194;
+    background-size:cover;
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  
+  .login-dark form {
+    max-width:320px;
+    width:90%;
+    background-color:#785a50;
+    padding:40px;
+    border-radius:4px;
+    /* transform:translate(-50%, -50%);
+     position:absolute;
+    top:50%;
+    left:50%; */
+    color:#1A061F !important;
+    box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+    max-height: 90%;
+    overflow: auto;
+  }
+  
+  .login-dark .illustration {
+    text-align:center;
+    /* padding: 15px 0 20px; */
+    font-size:100px;
+    color:#1f2f45;
+    background-color: #Eae7ea;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .login-dark form .form-control {
+    /* background: none; 
+    border:none; 
+    border-bottom:1px solid #1a061f; */
+    border-radius: 10px;
+    box-shadow:none;
+    outline:none;
+    color:inherit;
+  }
+  .login-dark form .btn-primary {
+    background:#214a80;
+    border:none;
+    border-radius:4px;
+    padding:11px;
+    box-shadow:none;
+    margin-top:26px;
+    text-shadow:none;
+    outline:none;
+  }
+  
+  .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+    background:#214a80;
+    outline:none;
+  }
+  
+  .login-dark form .forgot {
+    display:block;
+    text-align:center;
+    font-size: 12px;
+    color:#Eae7ea;
+    opacity:0.9;
+    text-decoration:none;
+  }
+  
+  .login-dark form .forgot:hover, .login-dark form .forgot:active {
+    opacity:1;
+    text-decoration:none;
+  }
+  
+  .login-dark form .btn-primary:active {
+    transform:translateY(1px);
+  }
+  /* Lagt til: */
+  .login-dark p {
+    font-size: larger;
+  }
+/*
+
+Settings
+
+*/
+.Settings-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d5b194;
+}
+    .Settings-form {
+        width: 50%;
+        height: fit-content;
+        background-color: #214a80;
+        padding: 20px;   
+        border-radius: 9px;
+    }
+    .Settings-form h1 {
+        font-size: 34px;
+        color: #Eae7ea;
+        width: 90%;
+        border-bottom: 2px #Eae7ea solid;
+        padding: 5px;
+    }
+    .Settings-form .form-check-input:checked {
+        background-color: #33f821 !important;
+        border: #33f821 !important;
+        color: #141414;
+    }
+
+
+
+
+/*
+
+
+footer  
+
+
+*/
+.footer-wrapping {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1A061F;
+}
+    .footer-link {
+        color: #Eae7ea;
+        letter-spacing: 10px;
+    }
+    .footer-link:hover {
+        text-decoration: none;
+        color: #Eae7ea;
+        letter-spacing: 10px;
+    }
+    .footer-title {
+        display: none;
+    }
