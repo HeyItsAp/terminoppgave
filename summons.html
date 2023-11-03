@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Biscuit Clicker </title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="Medium/Bilder/Mainicon.ico">
+
+</head>
+<body>
+        <nav>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="./settings.html"> Settings </a>
+                <a href="./items.html"> Items </a>
+                <a href="./summons.html"> Summons</a>
+                <a href="./login.html"> Login / Logout</a>
+            </div>
+            <img src="./Medium/Bilder/Mainlogo.png" class="Cookie-menu" onclick="openNav()">
+            <div class="Ham-icon" id="Ham-icon-id" onclick="SelectHamIcon(this), openNav()">
+                <div class="Ham-icon-1"></div>
+                <div class="Ham-icon-2"></div>
+                <div class="Ham-icon-3"></div>
+            </div>
+        </nav>
+        <div id="Summons">
+            <button onclick="pullItem()">Pull!</button>
+            <div id="result" class="result"></div>
+        </div>
+        <footer>
+            <div class="footer-wrapping">
+                <h2 class="footer-title"> Kontakt</h2>
+                <a href="mailto:adrian@gmail.com" class="footer-link">Adrian@gmail.com </a>
+                <a href="telto:9696969" class="footer-link">&nbsp; +47 96969699</a>
+                <!-- <a href="" class="footer-link"></a> -->
+    
+            </div>
+        </footer>
+    <script src="./script.js"></script>
+   
+</body>
+</html>

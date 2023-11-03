@@ -9,7 +9,15 @@ body {
     font-weight: 400 !important;
     margin: 0;
 }
+    .bold-text {
+        font-weight: 600;
+        padding-top: 10px;
+        padding-bottom: 10px;
 
+    }
+    .show {
+        display: flex !important;
+    }
 
 
 
@@ -143,6 +151,116 @@ nav {
     }
 /*
 
+Main Game
+
+*/
+
+#main-game {
+    width: 100%;
+    height: 95vh;
+    background-color: #d5b194;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+    .main-game-info {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+    }
+        .main-game-info h2 {
+            text-align: center;
+            margin: 6px 2px ;
+        }
+        .prestige-btn {
+            padding: 8px 32px;
+            color: #1A061F;
+            border: #1A061F solid 1px;
+            background-color: #EAE7EA;
+        }
+        .prestige-btn:hover {
+            padding: 8px 32px;
+            color: #EAE7EA;
+            background-color: #1A061F;
+        }
+ 
+    .clicker-biscuit{
+        width: 15%;
+        height: auto;
+        transition: 0.2s;
+    }
+        .clicker-biscuit:hover {
+            scale: 1.1;
+        }
+        .clicker-biscuit:active {
+            scale: 0.9;
+        }
+  
+#upgrade-menu {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #A66941 ;
+    display: flex;
+    justify-content: center;
+}
+    #The-upgrades-menu {
+        display: flex;
+        justify-content: center;
+        width: 45%;
+        flex-direction: column;
+        height: fit-content;
+    }
+        .upgrade {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            background-color: #1A061F;
+            border-radius: 25px;
+            color: white;
+        }
+            .upgradeheadline {
+                width: 70%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 10px;
+            }
+                .upgradeheadline p{
+                    margin: 0.5rem;
+
+                }
+                .upgradeheadline h2{
+                    margin: 0.5rem;
+                }
+            .upgrade button{
+                width: 30%;
+                height: 100%;
+                border: none;
+                background-color: #EAE7EA ;
+                border-radius: 0;
+            } 
+            .upgrade button:hover {
+                background-color: #6a8283;
+                color: #EAE7EA;
+
+            }
+    @media screen and (max-width: 900px) {
+        #The-upgrades-menu {
+            width: 70%;
+        }
+    }
+/*
+
 Login
 
 
@@ -261,9 +379,99 @@ Settings
         border: #33f821 !important;
         color: #141414;
     }
+/*
+
+Items
 
 
+*/
+.items-wrapper {
+    width: 100%;
+    height: fit-content;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #d5b194;
+}
+.items-wrapper h1{
+    width: 90%;
+    text-align: left;
+    border-bottom: #141414 solid 2px;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+    .items-mcontainer {
+        width: 90%;
+        height: max-content;
+        align-content: flex-start;
+        padding: 10px;
+    }
 
+  
+    #items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .item-container {
+        padding: 25px;
+        border-radius: 25px;
+        border: #Eae7ea 15px solid;
+        background-color: #214a80;
+        width: 350px;
+        text-align: center;
+        margin: 20px;
+    }
+    .item-container h2{
+        padding: 8px;
+        border-bottom: #Eae7ea solid 2px;
+        color: #Eae7ea;
+    }
+    .item-container img{
+        color: #Eae7ea;
+        font-size: 1rem;
+    }
+    .item-container p{
+        color: #Eae7ea;
+        font-size: 1rem;
+
+    }
+    .item-container label{
+        color: #Eae7ea;
+        font-size: 1rem;
+
+    }
+    @media screen and (max-width: 900px) {
+        #items {align-items: center; justify-content: center; flex-direction: column;}
+    
+    }
+
+/*
+
+
+Summons
+
+
+*/
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate {
+    animation-name: slideIn;
+}
 
 /*
 
@@ -283,12 +491,19 @@ footer
     .footer-link {
         color: #Eae7ea;
         letter-spacing: 10px;
+        text-decoration: none;
+
     }
     .footer-link:hover {
-        text-decoration: none;
+        text-decoration: underline;
         color: #Eae7ea;
         letter-spacing: 10px;
     }
     .footer-title {
         display: none;
+    }
+    @media screen and (max-width: 900px) {
+        .footer-link {letter-spacing: 1px;}
+        .footer-link:hover {letter-spacing: 1px;}
+
     }
