@@ -6,7 +6,14 @@
     <title> Biscuit Clicker </title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/x-icon" href="Medium/Bilder/Mainicon.ico">
-
+    <style>
+        #video:-webkit-full-screen[controls],
+        #video:-moz-full-screen[controls],
+        #video:-ms-fullscreen[controls],
+        #video:fullscreen[controls] {
+        opacity: 0; /* Controls are hidden when in fullscreen */
+        }
+    </style>
 </head>
 <body>
         <nav>
@@ -17,6 +24,7 @@
                 <a href="./summons.html"> Summons</a>
                 <a href="./login.html"> Login / Logout</a>
             </div>
+            <a href="./index.html" class="Maingamelink"> &lt; Main Game</a>
             <img src="./Medium/Bilder/Mainlogo.png" class="Cookie-menu" onclick="openNav()">
             <div class="Ham-icon" id="Ham-icon-id" onclick="SelectHamIcon(this), openNav()">
                 <div class="Ham-icon-1"></div>
@@ -25,8 +33,12 @@
             </div>
         </nav>
         <div id="Summons">
-            <button onclick="pullItem()">Pull!</button>
-            <div id="result" class="result"></div>
+            <p id="Stats"> </p>
+            <button onclick="pullItem()" id="pull-button">Pull!</button>
+            <p id="Error-msg"> </p>
+            <div id="result" class="result">
+                <p id="result-text"> </p>
+            </div>
         </div>
         <footer>
             <div class="footer-wrapping">

@@ -3,6 +3,9 @@
     Body
 
 */
+/* *:hover {
+    display: none;
+} */
 body {
     font-family: alfabet, sans-serif !important;
     font-style: normal !important;
@@ -456,23 +459,49 @@ Summons
 
 */
 
-.result {
-    margin-top: 20px;
-    font-size: 18px;
-    opacity: 0;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+#Summons {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 1000px;
 }
+    #result-text {
+        padding: 60px 40px;
+        text-align: center;
+    }
+    .animation {
+        animation: yourmom 3s;
+    }
+    
+    @keyframes yourmom {
+        0% {
+            padding: 280px 410px;
+            background-color: #FFFD91;
+            color: transparent;
+        }
+        30% {
+            background-color: #ADD8E6;
+        }
+        60% {
+            background-color: #1A061F;
+        }
+        85% {
+            color: transparent;
+            padding: 60px 40px;
+            background-color: #ADD8E6;
+        }
+        100% {
+            
+            color: #141414;
+            padding-top: 55px;
+            padding-right: 600px;
+            padding-left: 600px;
+            padding-bottom: 600px;
 
-@keyframes slideIn {
-    0% { opacity: 0; transform: translateY(-50px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
 
-.animate {
-    animation-name: slideIn;
-}
-
+        }
+    }
 /*
 
 
