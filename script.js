@@ -73,7 +73,7 @@ function incrementcount() {
   UpdateBiscuitCount();
   UpdatePrestige();
 }
-    if (page == "index.html") {
+    if (page == "index.php") {
       setInterval(() => {
         for (let element of Upgrades){
           biscuitCount += Math.round((element.value*element.antal) * 100) / 100
@@ -112,7 +112,7 @@ function UpdatePrestige(){
         let prestigeElement = document.getElementById("prestige-menu");
         
         let prestigetext = document.createElement("p");
-        prestigetext.innerHTML = "You can prestige and get: <span id='prestige'></span>";
+        prestigetext.innerHTML = "You can Biscuit Prestige (BP) and get: <span id='prestige'></span>";
         prestigeElement.appendChild(prestigetext);
         
         let prestige_button = document.createElement("button");
@@ -343,7 +343,7 @@ function RefreshUpgradesElem(){
     }
   }
 }
-if (page == "index.html"){
+if (page == "index.php"){
   RefreshUpgradesElem();
   UpdateBiscuitCount();
 
@@ -435,19 +435,22 @@ var items = [
   {
     navn: "Disabled Kid",
     Rarity: "Trash",
+    increment_increase: 0,
     beskrivelse: "Poor guy <br><span class='bold-text'> Already Disabled. Nothing. </span>", // Span for bold text
     Obtained: true,
   },
   {
     navn: "Sakura (Fra Naurto)",
+    increment_increase: 0,
     Rarity: "Trash",
-    beskrivelse: "Annoying Customer <br><span class='bold-text'> -10 Biscuit pr Second </span>", // Span for bold text
+    beskrivelse: "Annoying Customer <br><span class='bold-text'> 0 Biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
   {
     navn: "Santa Claus",
+    increment_increase: 0,
     Rarity: "Trash",
-    beskrivelse: "Sadly, did not come to give gifts. <br> <span class='bold-text'> -10 Biscuit pr Second </span>", // Span for bold text
+    beskrivelse: "Sadly, did not come to give gifts. <br> <span class='bold-text'> 0 Biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
   
@@ -455,73 +458,86 @@ var items = [
   {
     navn: "Black hole",
     Rarity: "Rare",
-    beskrivelse: "You learned how to refine energy and able to extract the energy of a black hole. <br><span class='bold-text'> + 25 biscuit pr Second.</span>", // Span for bold text
+    increment_increase: 25,
+    beskrivelse: "You learned how to refine energy and able to extract the energy of a black hole. <br><span class='bold-text'> + 25 biscuit pr Click.</span>", // Span for bold text
     Obtained: true,
   },
+
   {
     navn: "Skibidi Toilet",
     Rarity: "Rare",
-    beskrivelse: "Premium Toilet <br><span class='bold-text'> + 10 biscuit pr Click </span>", // Span for bold text
+    increment_increase: 25,
+    beskrivelse: "Premium Toilet <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   }, 
   {
     navn: "Whip from the good old times.",
     Rarity: "Rare",
-    beskrivelse: "The best motivator for any type of workplace. <br><span class='bold-text'> + 10 biscuit pr Click </span>", // Span for bold text
+    increment_increase: 50,
+    beskrivelse: "The best motivator for any type of workplace. <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   }, 
   {
     navn: "Chainsaw man",
     Rarity: "Rare",
-    beskrivelse: "Honest worker, but dumb. <br><span class='bold-text'> + 25 biscuit pr Second </span>", // Span for bold text
+    increment_increase: 25,
+    beskrivelse: "Honest worker, but dumb. <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   }, 
   {
     navn: "W Rizz.",
     Rarity: "Rare",
-    beskrivelse: "W Rizz. <br><span class='bold-text'> + 25 biscuit pr Second</span>", // Span for bold text
+    increment_increase: 25,
+    beskrivelse: "W Rizz. <br><span class='bold-text'> + 25 biscuit pr Click</span>", // Span for bold text
     Obtained: true,
   }, 
   {
     navn: "Creator's Mother",
+    increment_increase: 25,
     Rarity: "Rare",
-    beskrivelse: "How the hell is my mom in the game? <br><span class='bold-text'> + 10 biscuit pr Click </span>", // Span for bold text
+    beskrivelse: "How the hell is my mom in the game? <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
+
   // Epic items
   {
     navn: "H Magnus H",
+    increment_increase: 250,
     Rarity: "Epic",
-    beskrivelse: "Add him on Epic Games. <br><span class='bold-text'> + 200 biscuit pr Second </span>", // Span for bold text
+    beskrivelse: "Add him on Epic Games. <br><span class='bold-text'> + 200 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
   {
     navn: "Dad's Milk",
+    increment_increase: 100,
     Rarity: "Epic",
-    beskrivelse: "Your dad came home with premium milk. <br><span class='bold-text'> + 200 biscuit pr second. </span>", // Span for bold text
+    beskrivelse: "Your dad came home with premium milk. <br><span class='bold-text'> + 100 biscuit pr Click. </span>", // Span for bold text
     Obtained: true,
   },
   {
     navn: "Water bending",
+    increment_increase: 100,
     Rarity: "Epic",
-    beskrivelse: "Avatar reference. <br><span class='bold-text'> + 100 biscuit pr click </span>", // Span for bold text
+    beskrivelse: "Avatar reference. <br><span class='bold-text'> + 100 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
   // Legendary 
   {
     navn: "Ni-ho-di",
+    increment_increase: 5000,
     Rarity: "Legendary",
-    beskrivelse: "Good job. You won. <br><span class='bold-text'> 50000 biscuit pr Click </span>", // Span for bold text
+    beskrivelse: "Good job. You won. <br><span class='bold-text'> + 5000 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   },
   {
     navn: "Life",
+    increment_increase: 2000,
     Rarity: "Legendary",
-    beskrivelse: "You finally go outside <br><span class='bold-text'> 1000000 biscuit pr second </span>", // Span for bold text
+    beskrivelse: "You finally go outside <br><span class='bold-text'> + 2000 biscuit pr Click </span>", // Span for bold text
     Obtained: true,
   }
 ]
-if (page == "items.html") {
+if (page == "items.php") {
   function CreateItem(element) {
     let Item_div= document.createElement("div")
     Item_div.setAttribute("id", "Item-" + element.navn)
@@ -588,6 +604,27 @@ if (page == "items.html") {
         //
 let Summonreq = 10;
 document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
+// Bascailly the pulling mecanhic
+function pullRarity() {
+
+  // Random number generator
+  const randomNumber = Math.random() * 100;
+  
+  const trashProbability = 60;
+  const rareProbability = 35;
+  const epicProbability = 4;
+  const LegendaryProbability = 1;
+  if (randomNumber < trashProbability){
+    return items.filter(items => items.Rarity === "Trash");
+  } else if (randomNumber <= (rareProbability + trashProbability)) {
+    return items.filter(items => items.Rarity === "Rare");
+  } else if (randomNumber <= (rareProbability + epicProbability + trashProbability)) {
+    return items.filter(items => items.Rarity === "Epic");
+  } else if (randomNumber <= (rareProbability + epicProbability + trashProbability + LegendaryProbability)){
+    return items.filter(items => items.Rarity === "Legendary");
+  }
+}
+
 function pullItem(){
   if (biscuitprestige >= Summonreq){
   biscuitprestige - Summonreq;
@@ -599,39 +636,38 @@ function pullItem(){
     document.getElementById('result-text').className = '';
   
   const Rarity_array = pullRarity();
-
   console.log(Rarity_array)
-  if (Rarity_array.length == 1) {
-    var random_index = 0;
-  } else {
-    var random_index = Math.floor(Math.random() * Rarity_array.length);
-  }
+    // if (Rarity_array.length == 1) {
+    //   var random_index = 0;
+    // } else {
+    //   var random_index = Math.floor(Math.random() * Rarity_array.length);
+    // }
   var random_index = Math.floor(Math.random() * Rarity_array.length);
   document.getElementById("pull-button").style.display = 'none';
   // Display result
-  var video = document.createElement("video");
-    video.setAttribute("autoplay", "");
-    video.setAttribute("id", "video");
-    document.getElementById("result").appendChild(video);
-      let source = document.createElement("source");
-      source.setAttribute("type", "video/mp4");
-        if (Rarity_array[random_index].Rarity === "Trash"){
-          console.log("TRash");
-          source.setAttribute("src", "Medium/3star_animation.mp4");
-        }  else if (Rarity_array[random_index].Rarity === "Rare"){
-          console.log("Rare");
-          source.setAttribute("src", "Medium/3star_animation.mp4");
-        }  else if (Rarity_array[random_index].Rarity === "Epic"){
-          console.log("Epic");
-          source.setAttribute("src", "Medium/4star_animation.mp4");
-        }  else if (Rarity_array[random_index].Rarity === "Legendary"){
-          console.log("Legedary");
-          source.setAttribute("src", "Medium/5star_animation.mp4");
-        }
-        video.appendChild(source);
-    // Prevent scrolling
-    document.body.style.height = "100%"
-    document.body.style.overflow = "hidden"
+    var video = document.createElement("video");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("id", "video");
+      document.getElementById("result").appendChild(video);
+        let source = document.createElement("source");
+        source.setAttribute("type", "video/mp4");
+          if (Rarity_array[random_index].Rarity === "Trash"){
+            console.log("TRash");
+            source.setAttribute("src", "Medium/3star_animation.mp4");
+          }  else if (Rarity_array[random_index].Rarity === "Rare"){
+            console.log("Rare");
+            source.setAttribute("src", "Medium/3star_animation.mp4");
+          }  else if (Rarity_array[random_index].Rarity === "Epic"){
+            console.log("Epic");
+            source.setAttribute("src", "Medium/4star_animation.mp4");
+          }  else if (Rarity_array[random_index].Rarity === "Legendary"){
+            console.log("Legedary");
+            source.setAttribute("src", "Medium/5star_animation.mp4");
+          }
+          video.appendChild(source);
+      // Prevent scrolling
+      document.body.style.height = "100%"
+      document.body.style.overflow = "hidden"
     
 
     video.addEventListener('ended', () => {
@@ -661,26 +697,6 @@ function pullItem(){
   } else { 
     document.getElementById("Error-msg").innerHTML = 'Not enough';
   }
- 
 }
 
-function pullRarity() {
-
-  // Random number generator
-  const randomNumber = Math.random() * 100;
-  
-  const trashProbability = 60;
-  const rareProbability = 35;
-  const epicProbability = 4;
-  const LegendaryProbability = 1;
-  if (randomNumber < trashProbability){
-    return items.filter(items => items.Rarity === "Trash");
-  } else if (randomNumber <= (rareProbability + trashProbability)) {
-    return items.filter(items => items.Rarity === "Rare");
-  } else if (randomNumber <= (rareProbability + epicProbability + trashProbability)) {
-    return items.filter(items => items.Rarity === "Epic");
-  } else if (randomNumber <= (rareProbability + epicProbability + trashProbability + LegendaryProbability)){
-    return items.filter(items => items.Rarity === "Legendary");
-  }
-}
 

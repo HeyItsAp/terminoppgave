@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
+    header( "refresh:0; url=login.php" );
+    echo '<script> alert("You need to be logged in to acsess this");</script>';
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +22,7 @@
 
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="./settings.html"> Settings </a>
@@ -29,7 +37,10 @@
             <div class="Ham-icon-2"></div>
             <div class="Ham-icon-3"></div>
         </div>
-    </nav>
+    </nav> -->
+    <?php 
+        require_once "php_requires/nav_noindex.php";
+    ?>
     <div class="items-wrapper">
         <h1> Your items </h1>
         <div class="items-mcontainer">

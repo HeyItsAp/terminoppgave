@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
+    header( "refresh:0; url=login.php" );
+    echo '<script> alert("You need to be logged in to acsess this");</script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,22 +24,25 @@
     </style>
 </head>
 <body>
-        <nav>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="./settings.html"> Settings </a>
-                <a href="./items.html"> Items </a>
-                <a href="./summons.html"> Summons</a>
-                <a href="./login.html"> Login / Logout</a>
-            </div>
-            <a href="./index.html" class="Maingamelink"> &lt; Main Game</a>
-            <img src="./Medium/Bilder/Mainlogo.png" class="Cookie-menu" onclick="openNav()">
-            <div class="Ham-icon" id="Ham-icon-id" onclick="SelectHamIcon(this), openNav()">
-                <div class="Ham-icon-1"></div>
-                <div class="Ham-icon-2"></div>
-                <div class="Ham-icon-3"></div>
-            </div>
-        </nav>
+    <!-- <nav>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="./settings.html"> Settings </a>
+            <a href="./items.html"> Items </a>
+            <a href="./summons.html"> Summons</a>
+            <a href="./login.html"> Login / Logout</a>
+        </div>
+        <a href="./index.html" class="Maingamelink"> &lt; Main Game</a>
+        <img src="./Medium/Bilder/Mainlogo.png" class="Cookie-menu" onclick="openNav()">
+        <div class="Ham-icon" id="Ham-icon-id" onclick="SelectHamIcon(this), openNav()">
+            <div class="Ham-icon-1"></div>
+            <div class="Ham-icon-2"></div>
+            <div class="Ham-icon-3"></div>
+        </div>
+    </nav> -->
+    <?php 
+        require_once "php_requires/nav_noindex.php";
+    ?>
         <div id="Summons">
             <p id="Stats"> </p>
             <button onclick="pullItem()" id="pull-button">Pull!</button>

@@ -9,7 +9,7 @@
 body {
     font-family: alfabet, sans-serif !important;
     font-style: normal !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     margin: 0;
 }
     .bold-text {
@@ -364,6 +364,10 @@ Settings
     background-color: #d5b194;
 }
     .Settings-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
         width: 50%;
         height: fit-content;
         background-color: #214a80;
@@ -382,6 +386,16 @@ Settings
         border: #33f821 !important;
         color: #141414;
     }
+    .btn-primary {
+        background:#214a80;
+        border:none;
+        border-radius:4px;
+        padding:11px;
+        margin: 4px;
+        box-shadow:none;
+        text-shadow:none;
+        outline:none;
+      }
 /*
 
 Items

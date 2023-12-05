@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
+    header( "refresh:0; url=login.php" );
+    echo '<script> alert("You need to be logged in to acsess this");</script>';
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +19,7 @@
 </head>
 
 <body>
-    <nav>
+        <!-- <nav>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="./settings.html"> Settings </a>
@@ -26,20 +34,30 @@
             <div class="Ham-icon-2"></div>
             <div class="Ham-icon-3"></div>
         </div>
-    </nav>
+    </nav> -->
+    <?php 
+        require_once "php_requires/nav_noindex.php";
+    ?>
     <div class="Settings-container">
-        <form method="post" class="Settings-form">
+        <form method="post" class="Settings-form" action="setting_h.php">
             <h1> Settings </h1>
-            <div class="form-check form-switch d-flex align-items-center p-0 ms-5" >
+            <!-- <div class="form-check form-switch d-flex align-items-center p-0 ms-5" >
                 <input class="form-check-input text-success" type="checkbox" name="x1" checked>
                 <label class="form-check-label fs-4 text-white ms-3" for="x1">Default switch checkbox input</label>
             </div>
             <div class="form-check form-switch d-flex align-items-center p-0 ms-5">
                 <input class="form-check-input text" type="checkbox" name="x2" checked>
                 <label class="form-check-label fs-4 text-white ms-3" for="x2">Checked switch checkbox input</label>
-            </div>
+            </div> -->
+            <h5 style="color:#EAE7EA;"> New password </h5>
+            <div class="form-group"><input class="form-control" style="margin:5px;" type="text" name="new_username" placeholder="<?php echo $_SESSION['username']; ?>"></div>
+            <div class="form-group"><input class="form-control" style="margin:5px;" type="password" name="new_password" placeholder="<?php echo $_SESSION['pwd']; ?>"></div>
+            <div class="form-group"><input class="form-control" style="margin:5px;" type="password" name="confirm_password" placeholder="Confirm password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit"> Change login-info </button></div>
+            
+            <h5 style="color: #EAE7EA ;"> Others </h5>
+            <a href="Logg_out.php" style="padding: 15px; margin: 4px; border: #914336 6px solid; color: #914336; background-color:#EAE7EA; text-decoration: none;"> Logg ut her </a>
         </form>
-        
     </div>
 
     <footer>

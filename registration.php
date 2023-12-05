@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Login </title>
+    <title> Regisration </title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/x-icon" href="Medium/Bilder/Mainicon.ico">
 
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav>
+        <!-- <nav>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="./settings.html"> Settings </a>
@@ -29,22 +29,18 @@
             <div class="Ham-icon-2"></div>
             <div class="Ham-icon-3"></div>
         </div>
-    </nav>
+    </nav> -->
+    <?php 
+        require_once "php_requires/nav_noindex.php";
+    ?>
     <div class="login-dark">
-        <form method="post">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-            <div class="form-group"><input class="form-control" type="text" name="brukernavn" placeholder="Brukernavn"></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="password" name="passord" placeholder="Passord"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+        <form method="post" action="php_requires/res_h.php">
+            <h2 class="sr-only">Sign up Form</h2>
+            <div class="form-group"><input class="form-control" type="text" name="display_name" placeholder="Display Name"></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign up</button></div>
         </form> 
-        <!-- Log out: -->
-        <!-- <form>
-            <p> Du er logget in </p><br>
-            <p> Vil du logge ut? </p>
-            <button class="btn btn-primary btn-block" onclick="">Log ut</button>
-        </form> -->
     </div>
     <footer>
         <div class="footer-wrapping">
