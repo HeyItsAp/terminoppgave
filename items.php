@@ -18,7 +18,12 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-
+    <?php
+    if (isset($_SESSION["login"]) && $_SESSION["login"] == true){?>
+        <meta name="Login" content="<?php echo htmlspecialchars($_SESSION['login']); ?>">
+    <?php } else { ?>
+        <meta name="Login" content="0">
+    <?php } ?>
 
 </head>
 <body>
@@ -58,6 +63,7 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
 
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

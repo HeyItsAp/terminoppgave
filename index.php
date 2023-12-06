@@ -9,6 +9,12 @@ session_start();
     <title> Biscuit Clicker </title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" type="image/x-icon" href="Medium/Bilder/Mainicon.ico">
+    <?php
+    if (isset($_SESSION["login"]) && $_SESSION["login"] == true){?>
+        <meta name="Login" content="<?php echo htmlspecialchars($_SESSION['login']); ?>">
+    <?php } else { ?>
+        <meta name="Login" content="0">
+    <?php } ?>
 
 </head>
 <body>
@@ -23,7 +29,7 @@ session_start();
             </div>
             <?php 
                 if (isset($_SESSION["login"]) && $_SESSION["login"] == true){
-                    echo '<h2 style="margin: 10px;"> Hello, ' . $_SESSION["Display_Name"] . '</h2>';
+                    echo '<h2 id="login" style="margin: 10px;"> Hello, ' . $_SESSION["Display_Name"] . '</h2>';
                 }
             ?>
             <img src="./Medium/Bilder/Mainlogo.png" class="Cookie-menu" onclick="openNav()">
@@ -64,6 +70,7 @@ session_start();
             </div>
         </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="./script.js"></script>
    
 </body>

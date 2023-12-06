@@ -65,15 +65,15 @@ window.addEventListener("click", (d) => {
 var biscuitCount = 0;
 var incrementvalue = 1;
 var biscuitauto = 0;
-var prestige_req = 10;
-var biscuitprestige = 1000;
+var prestige_req = 100000;
+var biscuitprestige = 0;
 
 function incrementcount() {
   biscuitCount += incrementvalue;
   UpdateBiscuitCount();
   UpdatePrestige();
 }
-    if (page == "index.php") {
+    if (page == "index.php" || page == "") {
       setInterval(() => {
         for (let element of Upgrades){
           biscuitCount += Math.round((element.value*element.antal) * 100) / 100
@@ -98,13 +98,14 @@ function UpdateBiscuitAuto(){
   }
   document.getElementById("biscuit-auto").innerHTML = biscuitauto;
 }
+let calc_biscuitprestige = 0;
 function UpdatePrestige(){
-  biscuitprestige = Math.round((biscuitCount/prestige_req) * 100) / 100;
+  calc_biscuitprestige = Math.round((biscuitCount/prestige_req) * 100) / 100;
   if (biscuitprestige >= 1 && !showprestigeoption.called) {
     showprestigeoption();
-    document.getElementById("prestige").innerHTML = biscuitprestige;
+    document.getElementById("calc_prestige").innerHTML = calc_biscuitprestige;
   } else if (showprestigeoption.called){
-    document.getElementById("prestige").innerHTML = biscuitprestige;
+    document.getElementById("calc_prestige").innerHTML = calc_biscuitprestige;
   }
 }
       function showprestigeoption(){
@@ -112,8 +113,12 @@ function UpdatePrestige(){
         let prestigeElement = document.getElementById("prestige-menu");
         
         let prestigetext = document.createElement("p");
-        prestigetext.innerHTML = "You can Biscuit Prestige (BP) and get: <span id='prestige'></span>";
+        prestigetext.innerHTML = "You can Biscuit Prestige (BP) and get: <span id='calc_prestige'></span>";
         prestigeElement.appendChild(prestigetext);
+
+        let prestige_stats = document.createElement("p");
+        prestige_stats.innerHTML = "Currently you have: <span id='prestige'>" + biscuitprestige + "</span> BP";
+        prestigeElement.appendChild(prestige_stats);
         
         let prestige_button = document.createElement("button");
         prestige_button.setAttribute("class", "prestige-btn")
@@ -129,12 +134,14 @@ function UpdatePrestige(){
           UpdateBiscuitCount();
           incrementvalue = 1;
           biscuitauto = 0;
-          prestige_req = 10;
-          biscuitprestige = 0;
           RefreshUpgradesElem();
           UpdateBiscuitAuto();
           prestigetext.remove();
           prestige_button.remove();
+          biscuitprestige = biscuitprestige + calc_biscuitprestige;
+          document.getElementById("prestige").innerHTML = biscuitprestige;
+
+
 
 
           
@@ -343,7 +350,7 @@ function RefreshUpgradesElem(){
     }
   }
 }
-if (page == "index.php"){
+if (page == "index.php" || page == ""){
   RefreshUpgradesElem();
   UpdateBiscuitCount();
 
@@ -389,6 +396,7 @@ function CreateUpgrade(element) {
           UpdateBiscuitAuto();
           document.getElementById("price-" + element.navn).innerHTML = element.cost
           document.getElementById("antal-" + element.navn).innerHTML = element.antal
+
 
           
    
@@ -437,21 +445,21 @@ var items = [
     Rarity: "Trash",
     increment_increase: 0,
     beskrivelse: "Poor guy <br><span class='bold-text'> Already Disabled. Nothing. </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   {
     navn: "Sakura (Fra Naurto)",
     increment_increase: 0,
     Rarity: "Trash",
     beskrivelse: "Annoying Customer <br><span class='bold-text'> 0 Biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   {
     navn: "Santa Claus",
     increment_increase: 0,
     Rarity: "Trash",
     beskrivelse: "Sadly, did not come to give gifts. <br> <span class='bold-text'> 0 Biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   
   // Rare items
@@ -460,7 +468,7 @@ var items = [
     Rarity: "Rare",
     increment_increase: 25,
     beskrivelse: "You learned how to refine energy and able to extract the energy of a black hole. <br><span class='bold-text'> + 25 biscuit pr Click.</span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
 
   {
@@ -468,35 +476,35 @@ var items = [
     Rarity: "Rare",
     increment_increase: 25,
     beskrivelse: "Premium Toilet <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   }, 
   {
     navn: "Whip from the good old times.",
     Rarity: "Rare",
     increment_increase: 50,
     beskrivelse: "The best motivator for any type of workplace. <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   }, 
   {
     navn: "Chainsaw man",
     Rarity: "Rare",
     increment_increase: 25,
     beskrivelse: "Honest worker, but dumb. <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   }, 
   {
     navn: "W Rizz.",
     Rarity: "Rare",
     increment_increase: 25,
     beskrivelse: "W Rizz. <br><span class='bold-text'> + 25 biscuit pr Click</span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   }, 
   {
     navn: "Creator's Mother",
     increment_increase: 25,
     Rarity: "Rare",
     beskrivelse: "How the hell is my mom in the game? <br><span class='bold-text'> + 25 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
 
   // Epic items
@@ -505,21 +513,21 @@ var items = [
     increment_increase: 250,
     Rarity: "Epic",
     beskrivelse: "Add him on Epic Games. <br><span class='bold-text'> + 200 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   {
     navn: "Dad's Milk",
     increment_increase: 100,
     Rarity: "Epic",
     beskrivelse: "Your dad came home with premium milk. <br><span class='bold-text'> + 100 biscuit pr Click. </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   {
     navn: "Water bending",
     increment_increase: 100,
     Rarity: "Epic",
     beskrivelse: "Avatar reference. <br><span class='bold-text'> + 100 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   // Legendary 
   {
@@ -527,14 +535,14 @@ var items = [
     increment_increase: 5000,
     Rarity: "Legendary",
     beskrivelse: "Good job. You won. <br><span class='bold-text'> + 5000 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   },
   {
     navn: "Life",
     increment_increase: 2000,
     Rarity: "Legendary",
     beskrivelse: "You finally go outside <br><span class='bold-text'> + 2000 biscuit pr Click </span>", // Span for bold text
-    Obtained: true,
+    Obtained: false,
   }
 ]
 if (page == "items.php") {
@@ -553,27 +561,27 @@ if (page == "items.php") {
       Item_des.setAttribute("id", "iteminfo")
       document.getElementById("Item-" + element.navn).appendChild(Item_des)
       let Item_rarity = document.createElement("p")
-      Item_rarity.innerHTML = element.Rarity
+      Item_rarity.innerHTML = "Rarity: " + element.Rarity
       Item_rarity.setAttribute("id", "iteminfo")
       document.getElementById("Item-" + element.navn).appendChild(Item_rarity)
+      // Checkbox
+        // let Item_checkbox_div = document.createElement("div")
+        // Item_checkbox_div.setAttribute("id", "Item-" + element.navn + "2")
+        // Item_checkbox_div.setAttribute("class", "form-check form-switch d-flex align-items-center p-0 ms-5 ms-5 justify-content-center")
+        // document.getElementById("Item-" + element.navn).appendChild(Item_checkbox_div)
 
-      let Item_checkbox_div = document.createElement("div")
-      Item_checkbox_div.setAttribute("id", "Item-" + element.navn + "2")
-      Item_checkbox_div.setAttribute("class", "form-check form-switch d-flex align-items-center p-0 ms-5 ms-5 justify-content-center")
-      document.getElementById("Item-" + element.navn).appendChild(Item_checkbox_div)
+        //   let Item_checkbox= document.createElement("input")
+        //   Item_checkbox.setAttribute("class", "form-check-input text-success")
+        //   Item_checkbox.setAttribute("type", "checkbox")
+        //   Item_checkbox.setAttribute("name", "x1") // Do be determined later
+        //   Item_checkbox.setAttribute("checked", "") // Do be determined later
+        //   document.getElementById("Item-" + element.navn + "2").appendChild(Item_checkbox)
 
-        let Item_checkbox= document.createElement("input")
-        Item_checkbox.setAttribute("class", "form-check-input text-success")
-        Item_checkbox.setAttribute("type", "checkbox")
-        Item_checkbox.setAttribute("name", "x1") // Do be determined later
-        Item_checkbox.setAttribute("checked", "") // Do be determined later
-        document.getElementById("Item-" + element.navn + "2").appendChild(Item_checkbox)
-
-        let Item_label= document.createElement("label")
-        Item_label.setAttribute("class", "form-check-label fs-5 text-black ms-2")
-        Item_label.setAttribute("for", "x1") // Do be determined later
-        Item_label.innerHTML = "Disable or Enable"
-        document.getElementById("Item-" + element.navn + "2").appendChild(Item_label)
+        //   let Item_label= document.createElement("label")
+        //   Item_label.setAttribute("class", "form-check-label fs-5 text-black ms-2")
+        //   Item_label.setAttribute("for", "x1") // Do be determined later
+        //   Item_label.innerHTML = "Disable or Enable"
+        //   document.getElementById("Item-" + element.navn + "2").appendChild(Item_label)
 
       // Eksempel: 
       // <div class="item-container" id="daidwidwa">
@@ -588,14 +596,36 @@ if (page == "items.php") {
       //     </div>
       // </div>
   }
-  for (let element of items) {
-      if (element.Obtained == true){
-        console.log(element.navn + " = true")
-        CreateItem(element)
-      } else {
-        console.log(element.navn + " = false")
+    function CreateItems(items_array) {
+      let you_have_an_item = false;
+      for (let element of items_array) {
+          if (element.Obtained == true || element.Obtained == "true") {
+            console.log(element.navn + " = true")
+            you_have_an_item = true;
+            CreateItem(element)
+          } else {
+            console.log(element.navn + " = false")
+          }
       }
-  }
+      if (you_have_an_item == false){
+        let Item_div= document.createElement("div")
+        Item_div.setAttribute("id", "Items-Nothing")
+        Item_div.setAttribute("class", "item-container")
+        document.getElementById("items").appendChild(Item_div)
+    
+          let Item_h2 = document.createElement("h2")
+          Item_h2.innerHTML = "You have no items"
+          document.getElementById("Items-Nothing").appendChild(Item_h2)
+      }
+    }  
+ 
+}
+function Updateincrementvalue(){
+  for (let element of items) {
+    if (element.Obtained == true || element.Obtained == "true"){
+      incrementvalue += element.increment_increase
+    }
+  } 
 }
 // 
 
@@ -603,7 +633,9 @@ if (page == "items.php") {
 
         //
 let Summonreq = 10;
-document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
+if (page == "summons.php"){
+  document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
+}
 // Bascailly the pulling mecanhic
 function pullRarity() {
 
@@ -698,5 +730,74 @@ function pullItem(){
     document.getElementById("Error-msg").innerHTML = 'Not enough';
   }
 }
+// 
 
+    // To PHP / From PHP
 
+        //
+
+let isloggedinn = document.querySelector("meta[name='Login']").content;
+console.log(isloggedinn);
+if (isloggedinn == 1) {
+  console.log("log in true");
+  // if logged in
+  $.ajax({
+    url: 'php_requires/dataretrive_ajax.php',
+    type: 'GET',
+    datatype: 'json',
+    success: (data) => {
+      
+        // data is json? Get data anyway
+        console.log(data);
+        var user_information = JSON.parse(data);
+        // console.log(user_information.biscuit_progress[0].biscuit_count);
+        console.log(user_information);
+        // The second object contains an array
+
+      // Update user progress
+        biscuitCount = user_information.biscuit_progress[0].biscuit_count
+        biscuitprestige = user_information.biscuit_progress[0].prestige_count
+    
+      // Update user upgrades
+        for (var element of Upgrades) {
+          let name = element.navn
+          // Check if newCosts has a corresponding key
+          if (user_information.upgrades[0].hasOwnProperty(name)){
+            element.antal = user_information.upgrades[0][name];
+            if(user_information.upgrades[0][name] > 0) {
+              element.unlocked = true;
+            }
+          }
+          for (let i = 0; i < element.antal; i++) {
+            element.cost = Math.round(element.cost *1.15);
+          }
+        }
+        if (page == "index.php" || page == ""){
+          RefreshUpgradesElem();
+          UpdateBiscuitAuto();
+        }
+      // Update items
+        for (var element of items) {
+          let name = element.navn
+          // Check if newCosts has a corresponding key
+          if (user_information.items[0].hasOwnProperty(name)){
+            element.Obtained = user_information.items[0][name];
+          }
+        }
+
+        Updateincrementvalue();
+        console.log(items)
+        if (page == "items.php"){
+          CreateItems(items); 
+          
+        }
+        console.log(items)
+        // Create items in the items.php
+    },
+    error: (error) => {
+      console.error('Error fetching data:', error)
+    }
+  });
+} else if (isloggedinn == 0) {
+  console.log("Logged inn false");
+}

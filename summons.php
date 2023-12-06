@@ -22,6 +22,12 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
         opacity: 0; /* Controls are hidden when in fullscreen */
         }
     </style>
+        <?php
+    if (isset($_SESSION["login"]) && $_SESSION["login"] == true){?>
+        <meta name="Login" content="<?php echo htmlspecialchars($_SESSION['login']); ?>">
+    <?php } else { ?>
+        <meta name="Login" content="0">
+    <?php } ?>
 </head>
 <body>
     <!-- <nav>
@@ -61,6 +67,8 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
             </div>
         </footer>
     <script src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
    
 </body>
 </html>
