@@ -54,7 +54,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == true){
             <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <a href="registration.php"> Har ikke bruker? Lag bruker her </a>
+            <a href="registration.php"> No account? Create one here.</a>
 
         </form> 
         <!-- Log out: -->

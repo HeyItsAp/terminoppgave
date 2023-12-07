@@ -280,6 +280,14 @@ Main Game
         #The-upgrades-menu {
             width: 70%;
         }
+        .upgrade {
+            height: fit-content;
+        }
+        .upgrade button {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
     }
 /*
 
