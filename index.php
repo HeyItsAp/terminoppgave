@@ -40,6 +40,10 @@ session_start();
             </div>
         </nav>
         <div id="main-game">
+            <div class="main-game-instructions">
+                <h2> Welcome to Biscuit Clicker! </h2>
+                <p> Click the biscuit to bake a cookie, use cookies to buy upgrades. Attain the upgrade Mr. Biscuit WorldWide to win </p>
+            </div>
             <div class="main-game-info">
                 <h2> Biscuits: <span id="biscuit-count"></span></h2>
                 <h2 id="biscuit-auto-h2"> <!-- Biscuits per second: <span id="biscuit-auto">0</span> --></h2>
@@ -50,7 +54,11 @@ session_start();
         </div>
         <div id="upgrade-menu">
             <div id="The-upgrades-menu">
-                <p id="upgrade-info"></p>
+                <?php
+                    if (isset($_SESSION["login"]) && $_SESSION["login"] == true){
+                        echo '<button id="save" style="" onclick="save_progress()"> Save Progress</button>';
+                    }
+                ?>
                 <!-- <div class="upgrade">
                     <div class="upgradeheadline">
                         <h2> More sleep</h2>

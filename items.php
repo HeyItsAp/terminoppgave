@@ -48,10 +48,12 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
     ?>
     <div class="items-wrapper">
         <h1> Your items </h1>
+        <p> Your items are permanent upgrades and increase you biscuit count per click. Get items by "summoning" them </p>
+        <p id="increment_value"></p>
         <div class="items-mcontainer">
-            <form method="get" id="items">
+            <div id="items">
                 <!-- items printing by javascript -->
-            </form>
+            </div>
         </div>
     </div>
     <footer>

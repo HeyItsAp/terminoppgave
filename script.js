@@ -61,12 +61,13 @@ window.addEventListener("click", (d) => {
         //
 
 
-
 var biscuitCount = 0;
+var biscuitprestige = 0;
+
+
 var incrementvalue = 1;
 var biscuitauto = 0;
 var prestige_req = 100000;
-var biscuitprestige = 0;
 
 function incrementcount() {
   biscuitCount += incrementvalue;
@@ -132,14 +133,14 @@ function UpdatePrestige(){
           console.log(Upgrades);
           biscuitCount = 0;
           UpdateBiscuitCount();
-          incrementvalue = 1;
           biscuitauto = 0;
           RefreshUpgradesElem();
           UpdateBiscuitAuto();
           prestigetext.remove();
+          prestige_stats.remove();
+          calc_biscuitprestige = 0;
           prestige_button.remove();
           biscuitprestige = biscuitprestige + calc_biscuitprestige;
-          document.getElementById("prestige").innerHTML = biscuitprestige;
 
 
 
@@ -176,7 +177,7 @@ var Upgrades = [
     antal: 0,
     value: 20,
     cost: 1000,
-    des: "You actually learn how to cook :skull: <br><span class='bold-text'> Gain 20 Cookie pr second</span>"
+    des: "Go back to elementary school and learn the basics. <br><span class='bold-text'> Gain 20 Cookie pr second</span>"
   },
   {
     navn: "Extra lessons",
@@ -185,7 +186,7 @@ var Upgrades = [
     antal: 0,
     value: 50,
     cost: 2000,
-    des: "Go back to elmentary school and learn the basics <br><span class='bold-text'> Gain 50 Cookie pr second</span>"
+    des: "You lack behind, but with hard work you slowly make way. <br><span class='bold-text'> Gain 50 Cookie pr second</span>"
   },
   {
     navn: "Collage",
@@ -400,7 +401,7 @@ function CreateUpgrade(element) {
 
           
    
-          return document.getElementById("upgrade-info").innerHTML = "";
+          return 
 
           
 
@@ -626,6 +627,9 @@ function Updateincrementvalue(){
       incrementvalue += element.increment_increase
     }
   } 
+  if (page == "items.php"){
+    document.getElementById("increment_value").innerHTML = "Currently, you make " + incrementvalue + " pr click";
+  }
 }
 // 
 
@@ -633,9 +637,7 @@ function Updateincrementvalue(){
 
         //
 let Summonreq = 10;
-if (page == "summons.php"){
-  document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
-}
+
 // Bascailly the pulling mecanhic
 function pullRarity() {
 
@@ -656,10 +658,10 @@ function pullRarity() {
     return items.filter(items => items.Rarity === "Legendary");
   }
 }
-
 function pullItem(){
   if (biscuitprestige >= Summonreq){
-  biscuitprestige - Summonreq;
+  biscuitprestige = biscuitprestige - Summonreq;
+
   document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
 
   // Reset
@@ -675,7 +677,7 @@ function pullItem(){
     //   var random_index = Math.floor(Math.random() * Rarity_array.length);
     // }
   var random_index = Math.floor(Math.random() * Rarity_array.length);
-  document.getElementById("pull-button").style.display = 'none';
+  document.getElementById("summon-button").style.display = 'none';
   // Display result
     var video = document.createElement("video");
       video.setAttribute("autoplay", "");
@@ -704,14 +706,22 @@ function pullItem(){
 
     video.addEventListener('ended', () => {
       // Ending
-      document.getElementById("pull-button").style.display = 'block';
       let videoElement = document.getElementById("video");
       videoElement.remove();
       document.getElementById("result-text").style.display = 'block';
-      document.getElementById("result-text").innerHTML = 'You got: ' + Rarity_array[random_index].navn + '.<br> Rarity: ' + Rarity_array[random_index].Rarity;
+      if (Rarity_array[random_index].Obtained == "true"){
+        document.getElementById("result-text").innerHTML = 'You got: ' + Rarity_array[random_index].navn + ' <br> (Already Own)<br> Rarity: ' + Rarity_array[random_index].Rarity;
+      } else {
+        document.getElementById("result-text").innerHTML = 'You got: ' + Rarity_array[random_index].navn + ' <br> Rarity: ' + Rarity_array[random_index].Rarity;
+      }
       document.getElementById('result-text').className = 'animation';
       document.body.style.height = "auto"
       document.body.style.overflow = "auto"
+      document.getElementById('result-text').addEventListener("animationend", () => {
+        document.getElementById("summon-button").style.display = 'block';
+        save_item(Rarity_array[random_index]);
+      })
+
     });
     video.addEventListener('play', function() {
       // Try to request fullscreen when the video starts playing
@@ -736,9 +746,15 @@ function pullItem(){
 
         //
 
+// Logging in
 let isloggedinn = document.querySelector("meta[name='Login']").content;
+
 console.log(isloggedinn);
 if (isloggedinn == 1) {
+  if (page == "index.php" || page == ""){
+    document.getElementById("biscuit-count").innerHTML = "Loading ... ";
+  }
+
   console.log("log in true");
   // if logged in
   $.ajax({
@@ -757,6 +773,8 @@ if (isloggedinn == 1) {
       // Update user progress
         biscuitCount = user_information.biscuit_progress[0].biscuit_count
         biscuitprestige = user_information.biscuit_progress[0].prestige_count
+        console.log(biscuitprestige)
+
     
       // Update user upgrades
         for (var element of Upgrades) {
@@ -775,6 +793,7 @@ if (isloggedinn == 1) {
         if (page == "index.php" || page == ""){
           RefreshUpgradesElem();
           UpdateBiscuitAuto();
+          UpdatePrestige();
         }
       // Update items
         for (var element of items) {
@@ -787,17 +806,82 @@ if (isloggedinn == 1) {
 
         Updateincrementvalue();
         console.log(items)
+        // Create items in the items.php
         if (page == "items.php"){
           CreateItems(items); 
           
         }
         console.log(items)
-        // Create items in the items.php
+      // Summons
+        if (page == "summons.php"){
+          document.getElementById("Stats").innerHTML = "You have: " + biscuitprestige + " BP <br> For one summon: " + Summonreq + " BP <br>";
+        }
     },
     error: (error) => {
       console.error('Error fetching data:', error)
     }
   });
+
 } else if (isloggedinn == 0) {
   console.log("Logged inn false");
 }
+
+// Saving progress
+  function save_progress() {
+    console.log("Attempt to save progress and upgrades");
+    var save_form = document.createElement("form");
+    save_form.method = "POST";
+    save_form.action = "php_requires/save_progress_h.php";
+
+    for (var i = 0; i < Upgrades.length; i++) {
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.method = "POST";
+      input.name = "upgrades[" + Upgrades[i].navn + "]";
+      input.value = Upgrades[i].antal;
+      save_form.appendChild(input);
+    }
+    for (var i = 0; i < 2; i++) {
+      if (i == 0){
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.method = "POST";
+        input.name = "biscuit_progress[biscuit_count]";
+        input.value = biscuitCount;
+        save_form.appendChild(input);
+      }
+      if (i == 1){
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.method = "POST";
+        input.name = "biscuit_progress[prestige_count]";
+        input.value = biscuitprestige;
+        save_form.appendChild(input);
+      }
+    }
+    document.body.appendChild(save_form);
+    save_form.submit();
+  }
+// Saving new acquired items
+  function save_item(item_object){
+    console.log(item_object)
+    var save_form = document.createElement("form");
+    save_form.method = "POST";
+    save_form.action = "php_requires/save_item_h.php";
+
+    var input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "item[" + item_object.navn + "]";
+    input.value = "true";
+    save_form.appendChild(input);
+
+    var input_prestige = document.createElement("input");
+    input_prestige.type = "hidden";
+    input_prestige.name = "prestige_count";
+    input_prestige.value = biscuitprestige;
+    save_form.appendChild(input_prestige);
+
+    // input.value = true;
+    document.body.appendChild(save_form);
+    save_form.submit();
+  }

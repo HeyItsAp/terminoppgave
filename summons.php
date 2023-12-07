@@ -51,7 +51,7 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
     ?>
         <div id="Summons">
             <p id="Stats"> </p>
-            <button onclick="pullItem()" id="pull-button">Pull!</button>
+            <button onclick="pullItem()" id="summon-button">Summon Item!</button>
             <p id="Error-msg"> </p>
             <div id="result" class="result">
                 <p id="result-text"> </p>
@@ -66,8 +66,8 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true){
     
             </div>
         </footer>
-    <script src="./script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./script.js"></script>
 
    
 </body>

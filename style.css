@@ -160,7 +160,7 @@ Main Game
 
 #main-game {
     width: 100%;
-    height: 95vh;
+    height: fit-content;
     background-color: #d5b194;
 
     display: flex;
@@ -168,12 +168,17 @@ Main Game
     align-items: center;
     flex-direction: column;
 }
+    .main-game-instructions {
+        text-align: center;
+        margin: 20px;
+    }
     .main-game-info {
         width: 25%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        margin: 20px;
 
     }
         .main-game-info h2 {
@@ -196,6 +201,7 @@ Main Game
         width: 15%;
         height: auto;
         transition: 0.2s;
+        margin: 50px;
     }
         .clicker-biscuit:hover {
             scale: 1.1;
@@ -222,17 +228,20 @@ Main Game
         .upgrade {
             width: 100%;
             height: 150px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
             display: flex;
             align-items: center;
-            margin: 10px;
             background-color: #1A061F;
             border-radius: 25px;
             color: white;
         }
             .upgradeheadline {
-                width: 70%;
+                width: 65%;
                 height: 100%;
                 display: flex;
+
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
@@ -247,6 +256,7 @@ Main Game
                 }
             .upgrade button{
                 width: 30%;
+                transform: translate(6%);
                 height: 100%;
                 border: none;
                 background-color: #EAE7EA ;
@@ -256,6 +266,15 @@ Main Game
                 background-color: #6a8283;
                 color: #EAE7EA;
 
+            }
+            #save {
+                padding-top: 20px; 
+                padding-bottom: 20px; 
+                background-color:#33f821; 
+                border:none;
+            }
+            #save:hover {
+                background-color: #4c6444;
             }
     @media screen and (max-width: 900px) {
         #The-upgrades-menu {
@@ -479,13 +498,27 @@ Summons
     flex-direction: column;
     align-items: center;
     height: 1000px;
+    background-color: #d5b194;
 }
+    #summon-button {
+        padding: 12px 24px;
+        border: none;
+        background-color: #33f821;
+        transition: 0.5s;
+    }
+        #summon-button:hover {
+            padding: 24px 36px;
+        }
+        #summon-button:active {
+            padding: 12px 24px;
+            background-color: #4c6444 ;
+        }
     #result-text {
         padding: 60px 40px;
         text-align: center;
     }
     .animation {
-        animation: yourmom 3s;
+        animation: yourmom 10s;
     }
     
     @keyframes yourmom {
@@ -494,19 +527,18 @@ Summons
             background-color: #FFFD91;
             color: transparent;
         }
-        30% {
+        15% {
             background-color: #ADD8E6;
         }
-        60% {
+        30% {
             background-color: #1A061F;
         }
-        85% {
+        42.5% {
             color: transparent;
             padding: 60px 40px;
             background-color: #ADD8E6;
         }
-        100% {
-            
+        50% {
             color: #141414;
             padding-top: 55px;
             padding-right: 600px;
