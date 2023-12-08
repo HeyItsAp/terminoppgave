@@ -102,7 +102,7 @@ function UpdateBiscuitAuto(){
 let calc_biscuitprestige = 0;
 function UpdatePrestige(){
   calc_biscuitprestige = Math.round((biscuitCount/prestige_req) * 100) / 100;
-  if (biscuitprestige >= 1 && !showprestigeoption.called) {
+  if (calc_biscuitprestige >= 1 && !showprestigeoption.called) {
     showprestigeoption();
     document.getElementById("calc_prestige").innerHTML = calc_biscuitprestige;
   } else if (showprestigeoption.called){
@@ -138,15 +138,13 @@ function UpdatePrestige(){
           UpdateBiscuitAuto();
           prestigetext.remove();
           prestige_stats.remove();
+          biscuitprestige = biscuitprestige + calc_biscuitprestige;
           calc_biscuitprestige = 0;
           prestige_button.remove();
           biscuitprestige = biscuitprestige + calc_biscuitprestige;
-
-
-
-
-          
+          console.log(biscuitprestige);  
         });
+
       }
 
   // Upgrades
@@ -784,6 +782,10 @@ if (isloggedinn == 1) {
             element.antal = user_information.upgrades[0][name];
             if(user_information.upgrades[0][name] > 0) {
               element.unlocked = true;
+              let currentUpgrade = Upgrades.indexOf(element);
+              if (Upgrades[currentUpgrade+1] != undefined){
+                Upgrades[currentUpgrade+1]["unlocked"] = true;
+              }
             }
           }
           for (let i = 0; i < element.antal; i++) {

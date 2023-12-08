@@ -1,6 +1,6 @@
 <?php
-$dsn = "mysql:host=localhost;dbname=terminoppgave";
-$dbusername = "root";
+$dsn = "mysql:host=localhost;dbname=Terminoppgave";
+$dbusername = "remoteuser";
 $dbpassword = "miau";
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword); 

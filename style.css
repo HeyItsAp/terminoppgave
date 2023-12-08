@@ -96,6 +96,9 @@ nav {
         scale: 0.9;
         transition: 0.09s;
     }
+    #login {
+        color:#EAE7EA;
+    }
 /* Hamburger icon */
     .Ham-icon-1,
     .Ham-icon-2,
@@ -103,13 +106,11 @@ nav {
         display: block;
         width: 35px;
         height: 5px;
-        background-color: #141414;
+        background-color: #EAE7EA;
         margin: 6px 0;
         transition: 0.4s;
         margin-left: 20px;
-        margin-right: 20px;
-
-        
+        margin-right: 20px;   
     }
     .Ham-icon {
         display: none;

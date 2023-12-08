@@ -13,7 +13,7 @@ USE `Terminoppgave` ;
 -- -----------------------------------------------------
 -- Table `Terminoppgave`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Terminoppgave`.`User` (
+CREATE TABLE IF NOT EXISTS `Terminoppgave`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `DisplayName` VARCHAR(255) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
@@ -26,7 +26,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Terminoppgave`.`Items_bool`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Items_bool` (
+CREATE TABLE IF NOT EXISTS `Terminoppgave`.`items_bool` (
   `items_id` INT NOT NULL AUTO_INCREMENT,
   `User_id` INT NOT NULL,
   `Disabled Kid` VARCHAR(45) NOT NULL DEFAULT 'false',
@@ -42,11 +42,12 @@ CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Items_bool` (
   `Dad's Milk` VARCHAR(45) NOT NULL DEFAULT 'false',
   `Water bending` VARCHAR(45) NOT NULL DEFAULT 'false',
   `Ni-ho-di` VARCHAR(45) NOT NULL DEFAULT 'false',
+  `Life` VARCHAR(45) NOT NULL DEFAULT 'false',
   PRIMARY KEY (`items_id`),
   INDEX `fk_Items_User_idx` (`User_id` ASC),
   CONSTRAINT `fk_Items_User`
     FOREIGN KEY (`User_id`)
-    REFERENCES `Terminoppgave`.`User` (`id`)
+    REFERENCES `Terminoppgave`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -56,7 +57,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Terminoppgave`.`Biscuit_Progress`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Biscuit_Progress` (
+CREATE TABLE IF NOT EXISTS `Terminoppgave`.`biscuit_progress` (
   `Progress_id` INT NOT NULL AUTO_INCREMENT,
   `User_id` INT NOT NULL,
   `biscuit_count` INT(255) NOT NULL DEFAULT 0,
@@ -65,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Biscuit_Progress` (
   INDEX `fk_Biscuit_Progress_User1_idx` (`User_id` ASC),
   CONSTRAINT `fk_Biscuit_Progress_User1`
     FOREIGN KEY (`User_id`)
-    REFERENCES `Terminoppgave`.`User` (`id`)
+    REFERENCES `Terminoppgave`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -74,7 +75,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Terminoppgave`.`Upgrades_number`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Upgrades_number` (
+CREATE TABLE IF NOT EXISTS `Terminoppgave`.`upgrades_number` (
   `Upgrades_id` INT NOT NULL AUTO_INCREMENT,
   `User_id` INT NOT NULL,
   `Better sleep` INT NOT NULL DEFAULT 0,
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Terminoppgave`.`Upgrades_number` (
   INDEX `fk_Upgrades_User1_idx` (`User_id` ASC),
   CONSTRAINT `fk_Upgrades_User1`
     FOREIGN KEY (`User_id`)
-    REFERENCES `Terminoppgave`.`User` (`id`)
+    REFERENCES `Terminoppgave`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

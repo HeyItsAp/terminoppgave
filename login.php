@@ -48,7 +48,7 @@ if (isset($_SESSION["login"]) && $_SESSION["login"] == true){
         require_once "php_requires/nav_noindex.php";
     ?>
     <div class="login-dark">
-        <form method="POST" action="php_requires/Login_h.php">
+        <form method="POST" action="php_requires/login_h.php">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username"></div>
